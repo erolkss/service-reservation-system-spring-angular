@@ -14,6 +14,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { DemoNgZorroAntdModule } from './DemoNgZorroAntdModule';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SignupClientComponent } from './basic/components/signup-client/signup-client.component';
+import { SignupCompanyComponent } from './basic/components/signup-company/signup-company.component';
 
 registerLocaleData(en);
 
@@ -21,7 +23,9 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     LoginComponent,
-    SingupComponent
+    SingupComponent,
+    SignupClientComponent,
+    SignupCompanyComponent
   ],
   imports: [
     BrowserModule,
