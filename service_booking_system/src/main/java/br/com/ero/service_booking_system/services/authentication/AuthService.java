@@ -5,5 +5,7 @@ import br.com.ero.service_booking_system.dto.UserDto;
 
 public interface AuthService {
 
-    public UserDto signupClient(SignupRequestDTO signupRequestDTO);
+    UserDto signupClient(SignupRequestDTO signupRequestDTO);
+    Boolean presentByEmail(String email);
+    UserDto signupCompany(SignupRequestDTO signupRequestDTO);
 }
