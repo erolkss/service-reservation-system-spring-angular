@@ -17,7 +17,7 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    public static final String SECRET = "OOYTUQWWAH8JVQQB1LOYEPS80EOKK0ZR4DS1W68QMJ0TIBV4KRHBSHOTR6G4S5I2";
+    public static final String SECRET = "413F4428472B4B6250655368566D5970337336763979244226452948404D6351";
 
 
     private String createToken(Map<String, Object> claims, String userName) {
@@ -55,6 +55,7 @@ public class JwtUtil {
     public Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
+
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);

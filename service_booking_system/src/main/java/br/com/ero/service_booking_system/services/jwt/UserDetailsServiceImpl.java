@@ -1,8 +1,8 @@
 package br.com.ero.service_booking_system.services.jwt;
 
+import br.com.ero.service_booking_system.entities.User;
 import br.com.ero.service_booking_system.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,8 +18,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        br.com.ero.service_booking_system.entities.User user = userRepository.findFirstByEmail(email);
+        User user = userRepository.findFirstByEmail(email);
         if (user == null) throw new UsernameNotFoundException("Username not found", null);
-        return new User(user.getEmail(), user.getPassword(), new ArrayList<>());
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), new ArrayList<>());
     }
 }

@@ -9,6 +9,7 @@ import br.com.ero.service_booking_system.services.authentication.AuthService;
 import br.com.ero.service_booking_system.services.jwt.UserDetailsServiceImpl;
 import br.com.ero.service_booking_system.utils.JwtUtil;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 
 @RestController
+@Slf4j
 public class AuthenticationController {
     @Autowired
     private AuthService authService;
@@ -82,7 +84,7 @@ public class AuthenticationController {
         );
 
         response.addHeader("Access-Control-Expose-Headers", "Authorization");
-        response.addHeader("Access-Control-Allow-Headers", "Authorization," + " X-PINGOTHER, Origin, X-Request-Width, Content-Type, Accept, X-Custom-header");
+        response.addHeader("Access-Control-Allow-Headers", "Authorization," + " X-PINGOTHER, Origin, X-Requested-Width, Content-Type, Accept, X-Custom-header");
         response.addHeader(HEADER_STRING, TOKEN_PREFIX + jwt);
     }
 }

@@ -37,4 +37,15 @@ public class SimpleCorsFilter implements Filter {
             filterChain.doFilter(req, res);
         }
     }
+
+    @Override
+    public void init(FilterConfig filterConfig) {
+
+    }
+
+
+    @Override
+    public void destroy() {
+        Filter.super.destroy();
+    }
 }
