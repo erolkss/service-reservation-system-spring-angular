@@ -6,6 +6,8 @@ import lombok.Data;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.util.List;
+
 @Entity
 @Table(name = "ads")
 @Data
@@ -37,4 +39,5 @@ public class Ad {
 
         return adDTO;
     }
+
 }
