@@ -21,6 +21,13 @@ export class ClientService {
     })
   }
 
+  searchByName(name: any):Observable<any>{
+    return this.http.get(BASIC_URL + `api/client/search/${name}`,{
+      headers: this.createAuthorizationHeader()
+    })
+  }
+
+
   createAuthorizationHeader(): HttpHeaders {
     let authHeaders: HttpHeaders = new HttpHeaders();
     return authHeaders.set(
