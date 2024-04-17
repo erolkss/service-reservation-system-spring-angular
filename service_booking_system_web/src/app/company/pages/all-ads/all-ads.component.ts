@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CompanyService } from '../../services/company.service';
-import { UpdateAdComponent } from '../update-ad/update-ad.component';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
 
 @Component({
   selector: 'app-all-ads',
@@ -13,6 +13,7 @@ export class AllAdsComponent {
 
   constructor(
     private companyService: CompanyService,
+    private notification: NzNotificationService
   ){}
 
   ngOnInit(){
@@ -27,6 +28,13 @@ export class AllAdsComponent {
 
   updateImg(img){
     return 'data:image/jpeg;base64,' + img;
+  }
+
+  deleteAd(adId: any){
+    this.companyService.deleteAd(adId).subscribe(res => {
+      this.notification.success('SUCCESS', `Ad Deleted Successfully`, {nzDuration: 5000})
+      this.getAllAdsByUserId();
+    });
   }
 
 }
