@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ClientService } from '../../services/client.service';
 
 @Component({
   selector: 'app-client-dashboard',
@@ -7,4 +8,24 @@ import { Component } from '@angular/core';
 })
 export class ClientDashboardComponent {
 
+  ads: any = [];
+
+  constructor(
+    private clientService: ClientService,
+  ) { }
+
+
+  ngOnInit() {
+    this.getAllAds();
+  }
+
+  getAllAds() {
+    this.clientService.getAllAds().subscribe(res => {
+      this.ads = res;
+    })
+  }
+
+  updateImg(img) {
+    return 'data:image/jpeg;base64,' + img;
+  }
 }
