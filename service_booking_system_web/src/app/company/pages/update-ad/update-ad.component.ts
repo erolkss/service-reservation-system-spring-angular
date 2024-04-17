@@ -1,0 +1,29 @@
+import { Component } from '@angular/core';
+import { CompanyService } from '../../services/company.service';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'app-update-ad',
+  templateUrl: './update-ad.component.html',
+  styleUrl: './update-ad.component.scss'
+})
+export class UpdateAdComponent {
+
+  adId: any = this.activateRoute.snapshot.params['id'];
+
+  constructor(
+    private companyService: CompanyService,
+    private activateRoute: ActivatedRoute
+  ){}
+
+  ngOnInit(){
+    this.getAdById();
+  }
+
+  getAdById(){
+    this.companyService.getAdById(this.adId).subscribe(res => {
+      console.log(res);
+    })
+  }
+
+}

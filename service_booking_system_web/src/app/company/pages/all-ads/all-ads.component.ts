@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CompanyService } from '../../services/company.service';
+import { UpdateAdComponent } from '../update-ad/update-ad.component';
 
 @Component({
   selector: 'app-all-ads',
@@ -11,7 +12,7 @@ export class AllAdsComponent {
   ads:any;
 
   constructor(
-    private companyService: CompanyService
+    private companyService: CompanyService,
   ){}
 
   ngOnInit(){

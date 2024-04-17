@@ -14,7 +14,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class CompanyServiceImpl implements CompanyService{
+public class CompanyServiceImpl implements CompanyService {
 
     @Autowired
     private UserRepository userRepository;
@@ -24,7 +24,7 @@ public class CompanyServiceImpl implements CompanyService{
 
     public boolean postAd(Long userId, AdDTO adDTO) throws IOException {
         Optional<User> optionalUser = userRepository.findById(userId);
-        if (optionalUser.isPresent()){
+        if (optionalUser.isPresent()) {
             Ad ad = new Ad();
             ad.setServiceName(adDTO.getServiceName());
             ad.setDescription(adDTO.getDescription());
@@ -40,7 +40,15 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
 
-    public List<AdDTO> getAllAds(Long userId){
+    public List<AdDTO> getAllAds(Long userId) {
         return adRepository.findAllByUserId(userId).stream().map(Ad::getAdDto).collect(Collectors.toList());
+    }
+
+    public AdDTO getAdById(Long adId) {
+        Optional<Ad> optionalAd = adRepository.findById(adId);
+        if (optionalAd.isPresent()) {
+            return optionalAd.get().getAdDto();
+        }
+        return null;
     }
 }
