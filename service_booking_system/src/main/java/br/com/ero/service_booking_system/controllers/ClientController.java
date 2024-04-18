@@ -38,4 +38,9 @@ public class ClientController {
     public ResponseEntity<?> getAdDetailsByAdId(@PathVariable Long adId){
         return ResponseEntity.ok(clientService.getDetailsByAdId(adId));
     }
+
+    @GetMapping("my-bookings/{userId}")
+    public ResponseEntity<?> getAllBookingByUserId(@PathVariable Long userId){
+        return ResponseEntity.ok(clientService.getAllBookingsByUserId(userId));
+    }
 }
