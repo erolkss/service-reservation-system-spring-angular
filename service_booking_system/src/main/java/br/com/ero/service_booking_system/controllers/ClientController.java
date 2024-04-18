@@ -25,7 +25,7 @@ public class ClientController {
     }
 
     @PostMapping("/book-service")
-    public ResponseEntity<?> bookService(@PathVariable ReservationDTO reservationDTO){
+    public ResponseEntity<?> bookService(@RequestBody ReservationDTO reservationDTO){
         boolean success = clientService.bookService(reservationDTO);
         if (success) {
             return ResponseEntity.status(HttpStatus.OK).build();
