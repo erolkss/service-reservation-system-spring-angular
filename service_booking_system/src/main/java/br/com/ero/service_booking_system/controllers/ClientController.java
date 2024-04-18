@@ -33,4 +33,9 @@ public class ClientController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
+
+    @GetMapping("/ad/{adId}")
+    public ResponseEntity<?> getAdDetailsByAdId(@PathVariable Long adId){
+        return ResponseEntity.ok(clientService.getDetailsByAdId(adId));
+    }
 }

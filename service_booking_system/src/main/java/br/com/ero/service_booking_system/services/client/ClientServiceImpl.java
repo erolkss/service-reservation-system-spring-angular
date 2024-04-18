@@ -1,6 +1,7 @@
 package br.com.ero.service_booking_system.services.client;
 
 import br.com.ero.service_booking_system.dto.AdDTO;
+import br.com.ero.service_booking_system.dto.AdDetailsForClientDTO;
 import br.com.ero.service_booking_system.dto.ReservationDTO;
 import br.com.ero.service_booking_system.entities.Ad;
 import br.com.ero.service_booking_system.entities.Reservation;
@@ -55,7 +56,15 @@ public class ClientServiceImpl implements ClientService{
             reservationRepository.save(reservation);
             return true;
         }
-
         return false;
+    }
+
+    public AdDetailsForClientDTO getDetailsByAdId(Long adId){
+        Optional<Ad> optionalAd = adRepository.findById(adId);
+        AdDetailsForClientDTO adDetailsForClientDTO = new AdDetailsForClientDTO();
+        if (optionalAd.isPresent()){
+            adDetailsForClientDTO.setAdDTO(optionalAd.get().getAdDto());
+        }
+        return adDetailsForClientDTO;
     }
 }
