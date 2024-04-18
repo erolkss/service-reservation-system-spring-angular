@@ -68,7 +68,7 @@ public class CompanyController {
         return ResponseEntity.ok(companyService.getAllAdBookings(companyId));
     }
 
-    @GetMapping("/bookings/{bookingId}/{status}")
+    @GetMapping("/booking/{bookingId}/{status}")
     public ResponseEntity<?> changeBookingStatus(@PathVariable Long bookingId, @PathVariable String status){
         boolean success = companyService.changeBookingStatus(bookingId, status);
         if (success) return ResponseEntity.ok().build();
