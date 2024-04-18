@@ -83,12 +83,12 @@ public class ClientServiceImpl implements ClientService {
         Optional<User> optionalUser = userRepository.findById(reviewDTO.getUserId());
         Optional<Reservation> optionalBooking = reservationRepository.findById(reviewDTO.getBookId());
 
-        if (optionalBooking.isPresent() && optionalUser.isPresent()) {
+        if (optionalUser.isPresent() && optionalBooking.isPresent() ) {
             Review review = new Review();
 
             review.setReviewDate(new Date());
             review.setReview(reviewDTO.getReview());
-            review.setRating(review.getRating());
+            review.setRating(reviewDTO.getRating());
             review.setUser(optionalUser.get());
             review.setAd(optionalBooking.get().getAd());
 

@@ -47,7 +47,7 @@ public class WebSecurityConfig {
                 .httpBasic(basic -> basic.disable())
                 .authorizeHttpRequests( auth -> auth
                         .requestMatchers(HttpMethod.POST, "/authenticate").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/company/sign-up", "/client/sign-up", "/ads", "/search/{service}").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/company/sign-up", "/client/sign-up", "/ads", "/search/{service}", "/client/review").permitAll()
                         .requestMatchers("/api/**").permitAll()
                         .anyRequest().authenticated()
                 ).sessionManagement(
