@@ -8,6 +8,8 @@ import { CompanyService } from '../../services/company.service';
 })
 export class CompanyDashboardComponent {
 
+  bookings:any;
+
   constructor(
     private companyService: CompanyService,
   ){}
@@ -19,6 +21,7 @@ export class CompanyDashboardComponent {
   getAllAdBookings(){
     this.companyService.getAdAllAdBookings().subscribe(res => {
       console.log(res);
+      this.bookings = res;
     })
   }
 
