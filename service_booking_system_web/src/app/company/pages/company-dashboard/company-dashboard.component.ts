@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CompanyService } from '../../services/company.service';
 
 @Component({
   selector: 'app-company-dashboard',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrl: './company-dashboard.component.scss'
 })
 export class CompanyDashboardComponent {
+
+  constructor(
+    private companyService: CompanyService,
+  ){}
+
+  ngOnInit(){
+    this.getAllAdBookings();
+  }
+
+  getAllAdBookings(){
+    this.companyService.getAdAllAdBookings().subscribe(res => {
+      console.log(res);
+    })
+  }
 
 }

@@ -1,6 +1,7 @@
 package br.com.ero.service_booking_system.services.company;
 
 import br.com.ero.service_booking_system.dto.AdDTO;
+import br.com.ero.service_booking_system.dto.ReservationDTO;
 
 import java.io.IOException;
 import java.util.List;
@@ -16,4 +17,6 @@ public interface CompanyService {
     boolean updateAd(Long adId, AdDTO adDTO) throws IOException;
 
     boolean deleteAd(Long adId);
+
+    List<ReservationDTO> getAllAdBookings(Long companyId);
 }

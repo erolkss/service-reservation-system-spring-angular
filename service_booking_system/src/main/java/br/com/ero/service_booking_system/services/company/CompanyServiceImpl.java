@@ -1,9 +1,12 @@
 package br.com.ero.service_booking_system.services.company;
 
 import br.com.ero.service_booking_system.dto.AdDTO;
+import br.com.ero.service_booking_system.dto.ReservationDTO;
 import br.com.ero.service_booking_system.entities.Ad;
+import br.com.ero.service_booking_system.entities.Reservation;
 import br.com.ero.service_booking_system.entities.User;
 import br.com.ero.service_booking_system.repositories.AdRepository;
+import br.com.ero.service_booking_system.repositories.ReservationRepository;
 import br.com.ero.service_booking_system.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +25,9 @@ public class CompanyServiceImpl implements CompanyService {
     @Autowired
     private AdRepository adRepository;
 
+
+    @Autowired
+    private ReservationRepository reservationRepository;
     public boolean postAd(Long userId, AdDTO adDTO) throws IOException {
         Optional<User> optionalUser = userRepository.findById(userId);
         if (optionalUser.isPresent()) {
@@ -80,5 +86,9 @@ public class CompanyServiceImpl implements CompanyService {
         }
 
         return false;
+    }
+
+    public List<ReservationDTO> getAllAdBookings(Long companyId){
+        return reservationRepository.findAllByCompanyId(companyId).stream().map(Reservation::getReservationDto).collect(Collectors.toList());
     }
 }

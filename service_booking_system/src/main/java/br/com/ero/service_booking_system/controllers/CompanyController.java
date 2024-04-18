@@ -1,6 +1,7 @@
 package br.com.ero.service_booking_system.controllers;
 
 import br.com.ero.service_booking_system.dto.AdDTO;
+import br.com.ero.service_booking_system.dto.ReservationDTO;
 import br.com.ero.service_booking_system.services.company.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/company")
@@ -59,5 +61,10 @@ public class CompanyController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @GetMapping("/bookings/{companyId}")
+    public ResponseEntity<List<ReservationDTO>> getAllAdBookings(@PathVariable Long companyId){
+        return ResponseEntity.ok(companyService.getAllAdBookings(companyId));
     }
 }
