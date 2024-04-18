@@ -15,6 +15,7 @@ export class AdDetailComponent {
   adId = this.activateRoute.snapshot.params['adId'];
   avatarUrl:any;
   ad:any;
+  reviews: any;
 
   validateForm!: FormGroup;
 
@@ -38,6 +39,7 @@ export class AdDetailComponent {
       console.log(res);
       this.avatarUrl = 'data:image/jpeg;base64,' + res.adDTO.returnImg;
       this.ad = res.adDTO;
+      this.reviews = res.reviewDTOList;
     })
   }
 
