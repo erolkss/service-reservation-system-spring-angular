@@ -18,6 +18,7 @@ export class AppComponent {
 
   isClientLoggedIn: boolean = false;
   isCompanyLoggedIn: boolean = false;
+  isHome: boolean = false;
 
 
   constructor(
@@ -28,6 +29,7 @@ export class AppComponent {
     this.router.events.subscribe(event => {
       this.isClientLoggedIn = UserStorageService.isClientLoggedIn();
       this.isCompanyLoggedIn = UserStorageService.isCompanyLoggedIn();
+      this.isHome = true;
     })
   }
 
